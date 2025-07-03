@@ -1,6 +1,14 @@
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 
 export const NavBar = () => {
+  const navigate = useNavigate(); // customhook de react router
+
+  const onLogout = () => {
+    navigate('/login', {
+      replace: true,
+    });
+  };
+
   return (
     <nav className='navbar navbar-expand-sm navbar-dark bg-dark p-2'>
       <Link className='navbar-brand' to='/'>
@@ -46,7 +54,9 @@ export const NavBar = () => {
             Logout
           </NavLink> */}
           <span className='nav-item nav-link text-primary'>Ariel</span>
-          <button className='nav-item nav-link btn'>Logout</button>
+          <button onClick={onLogout} className='nav-item nav-link btn'>
+            Logout
+          </button>
         </ul>
       </div>
     </nav>
